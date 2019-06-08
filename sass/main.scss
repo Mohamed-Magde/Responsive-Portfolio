@@ -1,0 +1,188 @@
+@import 'menu';
+@import 'mobiel';
+
+
+$primary : #444;
+$secondary : #eece1a;
+$show-home-image : true;
+$home-image : url(../img/background.jpg);
+$background-opacity : 0.9;
+
+@mixin easeOut {
+  transition: all 0.5s ease-out;
+}
+
+@mixin background {
+  @if $show-home-image {
+    &#bg-img {
+      background: $home-image;
+      background-attachment: fixed;
+      background-size: cover;
+
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($primary, 0.7);
+        z-index: -1;
+      }
+    }
+
+
+  }
+}
+
+/////
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+  @include background;
+  font-family: 'Segoe UI',
+    Tahoma,
+    Geneva,
+    Verdana,
+    sans-serif;
+  background-color: $primary;
+  line-height: 1.5;
+  color: #fff;
+}
+
+////
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+
+  &.lg-heading {
+    font-size: 6rem;
+  }
+
+  &.sm-heading {
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    background: rgba(lighten($primary, 2), 0.5);
+  }
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+.text-secondary {
+  color: $secondary;
+}
+
+main {
+  padding: 4em;
+  height: 100%;
+
+
+
+  .icons {
+    margin-top: 1rem;
+
+    a {
+      padding: 0.4em;
+
+      &:hover {
+        color: $secondary;
+        @include easeOut();
+      }
+    }
+  }
+
+}
+
+#home {
+  overflow: hidden;
+
+  h1 {
+    margin-top: 20vh;
+  }
+}
+
+.about-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 30px;
+}
+
+.bio-image {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  margin: auto;
+  border-radius: 50%;
+  border: 3px solid #eece1a;
+}
+
+.job {
+  background: lighten($primary, 5);
+  padding: 0.5em;
+  border-bottom: 5px solid #eece1a;
+  text-align: center;
+}
+
+.bio {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+}
+
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: darken($primary, 10);
+}
+
+/////////////////
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1em;
+
+
+
+  div {
+    font-size: 2rem;
+    border: 3px solid #fff;
+    padding: 1.5em 2.5em;
+    margin-bottom: 3em;
+    transition: all 0.5s ease-out;
+
+    &:hover {
+      padding: 0.5em 1.5em;
+      background: #eece1a;
+      color: #000;
+
+      span {
+        color: #000;
+      }
+
+    }
+  }
+}
+
+@import 'mobiel';
